@@ -1,2 +1,2 @@
 node_modules/
-type_system_generator.js
+**/*.js
