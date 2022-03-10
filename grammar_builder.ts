@@ -4,39 +4,35 @@ class CFType {
     this.name = name;
   }
 }
-class REP extends CFType {
+export class REP extends CFType {
   definition: CFType;
   constructor(definition: CFType, name?: string) {
     super(name);
     this.definition = definition;
   }
 }
-
-class OPT extends CFType {
+export class OPT extends CFType {
   definition: CFType;
   constructor(definition: CFType, name?: string) {
     super(name);
     this.definition = definition;
   }
 }
-
-class ONE extends CFType {
+export class ONE extends CFType {
   definition: CFType[];
   constructor(definition: CFType[], name?: string) {
     super(name);
     this.definition = definition;
   }
 }
-
-class ALL extends CFType {
+export class ALL extends CFType {
   definition: CFType[];
   constructor(definition: CFType[], name?: string) {
     super(name);
     this.definition = definition;
   }
 }
-
-class T extends CFType {
+export class T extends CFType {
   definition: string;
   constructor(definition: string, name?: string) {
     super(name);
@@ -44,8 +40,6 @@ class T extends CFType {
   }
 }
 
-const num = new T("float");
-const str = new T("str");
-const bool = new T("bool");
-
-module.exports = { num, str, bool, T, REP, OPT, ALL, ONE };
+export const num = new T("float");
+export const str = new T("str");
+export const bool = new T("bool");
