@@ -1,0 +1,8 @@
+Export: {... Scope ...}
+Scope:
+    {... Cohort ...}
+    {... Roster ...}
+    {... Cohort [ Cohort ] [ Cohort ] ...}
+Cohort: EventStream
+Roster: Cohort
+EventStream: {... { SourceTable Docket } ...}
