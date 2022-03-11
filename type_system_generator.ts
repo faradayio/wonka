@@ -5,7 +5,7 @@ import { build_rust_class } from "./generators/rust";
 import { build_typescript_class } from "./generators/typescript";
 import { CFType } from "./grammar_builder";
 
-const builders = {
+const builders: Map<string, (name: string, root: CFType) => string> = {
   python: build_python_class,
   rust: build_rust_class,
   typescript: build_typescript_class,
@@ -25,22 +25,3 @@ export const generate_classes = (
       .map((cls) => builders[language](cls, grammar[cls]))
       .join("\n")}`
   );
-
-// TODO
-
-// T N tokens
-// regex the Token constants into SQL constants
-
-// serializer so I can see SQL output
-
-// gather all funcs
-// gather all ops
-// format everything using grammar_builder
-// Exp / Relation 2-input funcs
-
-// docstrings to replace type hints
-
-// apply misc mutations
-// tests
-// proliferate the preamble
-// release
