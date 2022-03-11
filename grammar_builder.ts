@@ -1,4 +1,5 @@
-class CFType {
+export class CFType {
+  definition: unknown;
   name?: string;
   constructor(name) {
     this.name = name;

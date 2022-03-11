@@ -1,12 +1,12 @@
-import { T, REP, OPT, ONE, ALL } from "../grammar_builder";
+import { T, REP, OPT, ONE, ALL, CFType } from "../grammar_builder";
 
-const no_quotes = (str) =>
+const no_quotes = (str: string) =>
   str
     .split("")
-    .filter((c) => c !== "'")
+    .filter((c: string) => c !== "'")
     .join("");
 
-const build_type = (cog) => {
+const build_type = (cog: CFType) => {
   if (cog instanceof T) return `'${cog.definition}'`;
   if (cog instanceof OPT) return `Optional[${build_type(cog.definition)}]`;
   if (cog instanceof REP) return `List[${build_type(cog.definition)}]`;
@@ -18,11 +18,11 @@ const build_type = (cog) => {
     return `Union[${cog.definition.map(build_type).join(", ")}]`;
 };
 
-export const build_python_class = (name, root) => `
+export const build_python_class = (name: string, root: CFType) => `
 class ${name}:
     _data: ${build_type(root)}
     def __init__(self, *args):
-        self._data = (${root.cogs
+        self._data = (${root.definition
           .map(
             (cog) =>
               `([arg for arg in args if matches_type(arg, ${no_quotes(
